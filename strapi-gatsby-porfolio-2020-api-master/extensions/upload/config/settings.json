@@ -1,0 +1,8 @@
+{
+    "provider": "cloudinary",
+    "providerOptions": {
+      "cloud_name": "https-farisadlin-com",
+      "api_key": "799639593246187",
+      "api_secret": "zLtCwqlfjTuAvi3bPu28tIY9DkQ"
+    }
+}
