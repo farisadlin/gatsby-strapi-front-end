@@ -36,13 +36,13 @@
     "category": {
       "type": "enumeration",
       "enum": [
-        "gatsby",
-        "javascript",
-        "react",
-        "html"
+        "coding",
+        "personal",
+        "cooking",
+        "motivation"
       ],
       "required": true,
-      "default": "gatsby"
+      "default": "coding"
     },
     "desc": {
       "type": "text",
