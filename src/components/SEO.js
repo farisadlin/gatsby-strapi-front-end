@@ -14,11 +14,19 @@ const query = graphql`
         twitterUsername
       }
     }
+    blog: strapiBlogs {
+      blogSlug: slug
+      blogTitle: title
+      blogDesc: desc
+      blogImage: image {
+        publicURL
+      }
+    }
   }
 `
 
-const SEO = ({ title, description }) => {
-  const { site } = useStaticQuery(query)
+const SEO = ({ title, description, blogImage }) => {
+  const { site, blog } = useStaticQuery(query)
   const {
     siteDesc,
     siteTitle,
@@ -26,15 +34,18 @@ const SEO = ({ title, description }) => {
     image,
     twitterUsername,
   } = site.siteMetadata
+
+  console.log(`${siteUrl}${blogImage}`)
+
   return (
     <Helmet htmlAttributes={{ lang: "en" }} title={`${title} || ${siteTitle}`}>
       <meta name="description" content={description || siteDesc} />
       <meta name="image" content={image} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content={twitterUsername} />
-      <meta name="twitter:title" content={siteTitle} />
-      <meta name="twitter:description" content={siteDesc} />
-      <meta name="twitter:image" content={`${siteUrl}${image}`} />
+      <meta name="twitter:title" content={title || siteTitle} />
+      <meta name="twitter:description" content={description || siteDesc} />
+      <meta name="twitter:image" content={`${siteUrl}${blogImage}` || `${siteUrl}${image}`} />
     </Helmet>
   )
 }

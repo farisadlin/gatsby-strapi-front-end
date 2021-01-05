@@ -5,10 +5,11 @@ import ReactMarkdown from "react-markdown"
 import SEO from '../components/SEO'
 
 const ComponentName = ({data}) => {
-  const {blog: {content, title, desc}} = data;
+  const {blog: {content, title, desc, blogImage: {publicURL}}} = data;
+  console.log(content);
   return (
     <Layout>
-      <SEO title={title} description={desc}/>
+      <SEO title={title} description={desc} blogImage={publicURL}/>
       <section className="blog-template">
         <div className="section-center">
           <article className="blog-content">
@@ -29,6 +30,9 @@ export const query = graphql`
       content
       title
       desc
+      blogImage: image {
+        publicURL
+      }
     }
   }
 `

@@ -2,7 +2,10 @@ import React from "react"
 import PropTypes from "prop-types"
 import Image from "gatsby-image"
 import { Link } from "gatsby"
+import WordLimit from 'react-word-limit';
+
 const Blog = ({slug, desc, date, title, id, category, image}) => {
+  console.log(image.childImageSharp.fluid)
   return (
     <Link to={`/blogs/${slug}`} className="blog" key={id}>
       <article>
@@ -11,7 +14,7 @@ const Blog = ({slug, desc, date, title, id, category, image}) => {
         )}
         <div className="blog-card">
           <h4>{title}</h4>
-          <p>{desc}</p>
+          <p><WordLimit limit={250}>{desc}</WordLimit></p>
           <div className="blog-footer">
             <p>{category}</p>
             <p>{date}</p>
